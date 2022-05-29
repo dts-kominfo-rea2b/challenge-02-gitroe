@@ -23,19 +23,46 @@ function lakukanLooping(arrPegawai) {
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
+  let hasilLooping = [];
+  /* 
+    data dari JSON 
+    "namaDepan": "Edyth",
+    "namaBelakang": "Roberts",
+  */
+  for(hL = 0; hL < arrPegawai.length; hL++) {
+    let depanBelakang = dataYangAkanDilooping[hL].namaDepan + ' ' + (dataYangAkanDilooping[hL].namaBelakang);
+    hasilLooping.push(depanBelakang);
+  };
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
-  let jumlahPria = null;
+  /* 
+    data dari JSON 
+    "jenisKelamin": "M"
+  */
+  let jumlahPria = 0;
+  for (jP = 0; jP < dataYangAkanDilooping.length; jP++) {
+    if (dataYangAkanDilooping[jP].jenisKelamin == 'M') {
+      jumlahPria = jumlahPria + 1;
+    }
+  };
 
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
-  let jumlahWanita = null;
+  /*
+  data dari JSON 
+    "jenisKelamin": "F"
+  */
+  let jumlahWanita = 0;
+  for (jW = 0; jW < dataYangAkanDilooping.length; jW++) {
+    if (dataYangAkanDilooping[jW].jenisKelamin == 'F') {
+      jumlahWanita = jumlahWanita + 1;
+    }
+  };
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -48,7 +75,15 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
+  let komentar = "";
+  if (jumlahPria > jumlahWanita) {
+    komentar =  "Jumlah Pria lebih banyak dari Wanita";
+  } else if (jumlahPria < jumlahWanita) {
+    komentar =  "Jumlah Wanita lebih banyak dari Pria";
+  } else {
+    komentar = "Jumlah Pria dan Wanita berimbang";
+  };
+
 
   // ! JANGAN DIMODIFIKASI
   return {
@@ -65,7 +100,7 @@ function main(data) {
   console.log(hasil.hasilLooping);
   console.log(hasil.jumlahPria);
   console.log(hasil.jumlahWanita);
-
+  console.log(hasil.komentar); //hasil komentar belum tampil
   return hasil;
 }
 
